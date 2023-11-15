@@ -2,26 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer utilities{
+  .app-container{
+    @apply px-5 sm:px-8 md:px-10 lg:px-12
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+*{
+  transition: .4s;
+}
+
+body{
+  background-color: transparent!important;
+}
+
+@keyframes loading {
+  to{
+    color: #fefefe;
+    background-color: #fefefe;
+    height: 120vw;
+  }
+}
+
+.shimmer{
+  animation: shimmer .5s linear infinite;
+}
+@keyframes shimmer {
+  60%{
+    opacity: 0.5;
+  }
+}
+
+::-webkit-scrollbar{
+  background-color: #a60000;
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb{
+  border-radius: 4px;
+  background-color: #eee;
+  scale: .9;
 }
