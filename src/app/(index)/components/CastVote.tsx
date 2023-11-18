@@ -105,7 +105,7 @@ export default function CastVote() {
           </div>
         </div>
       </div>
-      <button
+      <button 
         role={loading ? "button" : undefined}
         disabled={loading || canContinue.includes(false)}
         className="text-center w-fit rounded-3xl disabled:opacity-70 disabled:pointer-events-none bg-primary text-light hover:bg-red-100 hover:text-dark-text border-primary border px-10 font-semibold py-3 inline-flex items-center justify-center"
