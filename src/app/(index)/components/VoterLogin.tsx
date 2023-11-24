@@ -28,6 +28,8 @@ export default function VoterLogin() {
       if(json.success){
         setLoading(false);
         setShowModal(false);
+        console.log(json);
+        
         setCookie("uid", encodeID(json.uid as string, process.env.APP_SECRET ?? APP_SECRET), 30);
         if(json.voted)dispatch(updateUser("voted"));
         else dispatch(updateUser("loggedin"));

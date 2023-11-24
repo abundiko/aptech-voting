@@ -1,6 +1,4 @@
 import StudentModel from "@/server/schemas/studentSchema";
-import { APP_SECRET } from "@/utils/constants";
-import { decodeID } from "@/utils/encode-decode";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -10,17 +8,16 @@ export async function POST(req: NextRequest) {
     if (!sid) return NextResponse.json({ error: "invalid studentID" });
 
     const doc = await StudentModel.findOne({ sid });
-    const isFirstTime = !!doc;
-    console.log(doc, "is doc");
+    const isFirstTime = !doc;
 
-    if (!isFirstTime) {
+    if (isFirstTime) {
       const doc = new StudentModel({ sid });
       const saved = await doc.save();
       if (saved) {
         return NextResponse.json({
           success: "logged in successfully",
           uid: sid,
-          voted: doc.voted
+          voted: false
         });
       }
     } else {
@@ -28,7 +25,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({
           success: "logged in successfully",
           uid: sid,
-          voted: false
+          voted: doc.voted
         });
     }
 

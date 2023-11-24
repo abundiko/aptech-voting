@@ -1,6 +1,7 @@
 import { VoteCategories, VoteCategoryType, Votee } from "@/utils/constants";
 import {  AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { FaUser } from "react-icons/fa6";
 
 export type VoteeStandProps = Votee & {
   currentCategory: VoteCategoryType;
@@ -77,9 +78,9 @@ export default function VoteeStand({
          className="absolute top-1/2 left-1/2 -translate-x-1/2 bg-red-100 p-5 rounded-full -translate-y-1/2 text-3xl font-bold">+{newVotes}</motion.div>
          }
          </AnimatePresence>
-          <motion.div
-            className="rounded-full block bg-slate-200 aspect-square w-20 flex-shrink-0 "
-          />
+          <div className="flex rounded-full h-10 w-10 items-center justify-center text-xl text-light-text bg-dark-text">
+            <FaUser />
+          </div>
           <motion.h1
             className="my-1 leading-[15px] font-bold text-center text-base"
           >
